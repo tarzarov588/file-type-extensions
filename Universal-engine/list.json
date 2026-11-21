@@ -1,17 +1,40 @@
 {
   "extensions": [
     {
-      "extension": ".woff2",
-      "name": "Web Open Font Format 2",
-      "category": "Fonts",
-      "description_pt": "Formato de fonte comprimido desenvolvido para utilização na web.",
-      "description_en": "Compressed font format designed for use on the web.",
-      "mime_type": "font/woff2",
-      "status": "Open",
-      "official_documentation": "https://www.w3.org/TR/WOFF2/",
-      "platforms": ["Browsers", "Web"],
-      "sources": ["https://www.w3.org/TR/WOFF2/"]
-    },
+      {
+  "extension": ".woff2",
+  "name": "Web Open Font Format 2",
+  "category": "Fonts",
+  "description_pt": "Formato de fonte comprimido desenvolvido para utilização na web, oferecendo arquivos menores e carregamento eficiente.",
+  "description_en": "Compressed font format designed for web use, offering smaller files and efficient loading.",
+  "mime_type": "font/woff2",
+  "status": "Open",
+  "official_documentation": "https://www.w3.org/TR/WOFF2/",
+  "platforms": ["Browsers", "Web"],
+  "sources": ["https://www.w3.org/TR/WOFF2/"],
+  "developer": "World Wide Web Consortium (W3C)",
+  "first_release": "2012",
+  "compression": "Brotli",
+  "encoding": "Binary",
+  "programs": ["Google Chrome", "Mozilla Firefox", "Microsoft Edge", "Safari"],
+  "magic_number": "wOF2",
+  "common_usage": [
+    "Web typography",
+    "Website fonts",
+    "Custom typefaces"
+  ],
+  "advantages": [
+    "High compression efficiency",
+    "Smaller font files",
+    "Optimized for web delivery"
+  ],
+  "disadvantages": [
+    "Not supported by every legacy application",
+    "Requires compatible font software"
+  ],
+  "can_be_executed": false,
+  "is_text_based": false
+},
     {
       "extension": ".svg",
       "name": "Scalable Vector Graphics",
