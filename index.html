@@ -1,0 +1,300 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Universal Extensions — Catálogo mundial de extensões, plugins, complementos e formatos digitais.">
+
+    <title>Universal Extensions</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+        }
+
+        header {
+            padding: 25px;
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+        }
+
+        header h1 {
+            font-size: 28px;
+            color: #58a6ff;
+        }
+
+        header p {
+            margin-top: 8px;
+            color: #8b949e;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 25px;
+        }
+
+        .search {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            background: #161b22;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search:focus {
+            border-color: #58a6ff;
+        }
+
+        .stats {
+            margin: 20px 0;
+            padding: 18px;
+            background: #161b22;
+            border-radius: 8px;
+        }
+
+        .stats strong {
+            color: #58a6ff;
+            font-size: 25px;
+        }
+
+        #extensions {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .extension {
+            padding: 18px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .extension:hover {
+            border-color: #58a6ff;
+        }
+
+        .extension h3 {
+            color: #58a6ff;
+            margin-bottom: 10px;
+        }
+
+        .extension p {
+            color: #8b949e;
+            font-size: 14px;
+        }
+
+        #details {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            overflow-wrap: anywhere;
+        }
+
+        #details pre {
+            white-space: pre-wrap;
+            margin-top: 15px;
+            color: #c9d1d9;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-top: 15px;
+            background: #238636;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .message {
+            color: #8b949e;
+            padding: 20px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #8b949e;
+            border-top: 1px solid #30363d;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Universal Extensions</h1>
+    <p>The World's Universal Extensions Catalog</p>
+</header>
+
+<main>
+
+    <input
+        type="search"
+        id="search"
+        class="search"
+        placeholder="Pesquisar extensões..."
+        autocomplete="off"
+    >
+
+    <div class="stats">
+        <strong id="total">0</strong>
+        <p>Extensões catalogadas</p>
+    </div>
+
+    <p id="status" class="message">
+        Carregando catálogo...
+    </p>
+
+    <section id="extensions"></section>
+
+    <section id="details">
+        <h2>Informações da extensão</h2>
+        <pre id="detailsContent"></pre>
+        <button onclick="closeDetails()">Fechar</button>
+    </section>
+
+</main>
+
+<footer>
+    Universal Extensions © 2026
+</footer>
+
+<script>
+    const LIST_URL =
+        "https://raw.githubusercontent.com/Tarzarov588/file-type-extensions/main/list.json";
+
+    let database = [];
+    let filtered = [];
+
+    async function loadExtensions() {
+        const status = document.getElementById("status");
+
+        try {
+            const response = await fetch(LIST_URL);
+
+            if (!response.ok) {
+                throw new Error("Não foi possível acessar o list.json.");
+            }
+
+            const data = await response.json();
+
+            database = Array.isArray(data)
+                ? data
+                : Object.values(data);
+
+            filtered = database;
+
+            document.getElementById("total").textContent =
+                database.length.toLocaleString("pt-BR");
+
+            status.textContent = "";
+
+            renderExtensions();
+
+        } catch (error) {
+            status.textContent =
+                "Erro ao carregar o catálogo: " + error.message;
+        }
+    }
+
+    function renderExtensions() {
+        const container = document.getElementById("extensions");
+
+        container.innerHTML = "";
+
+        filtered.slice(0, 100).forEach((extension, index) => {
+            const card = document.createElement("article");
+
+            card.className = "extension";
+
+            const name =
+                extension.extension ||
+                extension.name ||
+                extension.format ||
+                "Extensão sem nome";
+
+            const description =
+                extension.description_pt ||
+                extension.description ||
+                extension.description_en ||
+                "Sem descrição disponível.";
+
+            const title = document.createElement("h3");
+            title.textContent = name;
+
+            const text = document.createElement("p");
+            text.textContent = description;
+
+            card.append(title, text);
+
+            card.addEventListener("click", () => {
+                showDetails(filtered[index]);
+            });
+
+            container.appendChild(card);
+        });
+
+        if (filtered.length > 100) {
+            const info = document.createElement("p");
+            info.className = "message";
+            info.textContent =
+                "Mostrando 100 de " +
+                filtered.length.toLocaleString("pt-BR") +
+                " resultados. Refine sua pesquisa.";
+            container.appendChild(info);
+        }
+    }
+
+    function showDetails(extension) {
+        document.getElementById("details").style.display = "block";
+
+        document.getElementById("detailsContent").textContent =
+            JSON.stringify(extension, null, 4);
+
+        document.getElementById("details").scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+
+    function closeDetails() {
+        document.getElementById("details").style.display = "none";
+    }
+
+    document.getElementById("search").addEventListener("input", event => {
+        const query = event.target.value.toLowerCase().trim();
+
+        filtered = database.filter(extension =>
+            JSON.stringify(extension).toLowerCase().includes(query)
+        );
+
+        renderExtensions();
+    });
+
+    loadExtensions();
+</script>
+
+</body>
+</html>
+```
