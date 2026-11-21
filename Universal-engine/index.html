@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,11 +83,12 @@
             border: 1px solid #30363d;
             border-radius: 8px;
             cursor: pointer;
-            transition: border-color 0.2s;
+            transition: border-color 0.2s, transform 0.2s;
         }
 
         .extension:hover {
             border-color: #58a6ff;
+            transform: translateY(-2px);
         }
 
         .extension h3 {
@@ -97,32 +99,104 @@
         .extension p {
             color: #8b949e;
             font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .category {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 5px 9px;
+            background: #21262d;
+            color: #79c0ff;
+            border-radius: 5px;
+            font-size: 12px;
         }
 
         #details {
             display: none;
-            margin-top: 25px;
+            margin-top: 30px;
+        }
+
+        .details-header {
+            padding: 20px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .details-header h2 {
+            color: #58a6ff;
+        }
+
+        .details-header p {
+            margin-top: 8px;
+            color: #8b949e;
+        }
+
+        .details-section {
+            margin-top: 15px;
             padding: 20px;
             background: #161b22;
             border: 1px solid #30363d;
             border-radius: 8px;
+        }
+
+        .details-section h3 {
+            color: #58a6ff;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .field {
+            margin-bottom: 15px;
+        }
+
+        .field:last-child {
+            margin-bottom: 0;
+        }
+
+        .field strong {
+            display: block;
+            color: #c9d1d9;
+            margin-bottom: 6px;
+        }
+
+        .field p {
+            color: #8b949e;
+            line-height: 1.6;
             overflow-wrap: anywhere;
         }
 
-        #details pre {
-            white-space: pre-wrap;
-            margin-top: 15px;
-            color: #c9d1d9;
+        .field ul {
+            padding-left: 22px;
+            color: #8b949e;
+            line-height: 1.8;
+        }
+
+        .field a {
+            color: #58a6ff;
+            text-decoration: none;
+            overflow-wrap: anywhere;
+        }
+
+        .field a:hover {
+            text-decoration: underline;
         }
 
         button {
-            padding: 10px 15px;
+            padding: 11px 17px;
             margin-top: 15px;
             background: #238636;
             color: white;
             border: none;
             border-radius: 6px;
             cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: #2ea043;
         }
 
         .message {
@@ -136,6 +210,20 @@
             color: #8b949e;
             border-top: 1px solid #30363d;
             margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 15px;
+            }
+
+            header {
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
@@ -169,9 +257,15 @@
     <section id="extensions"></section>
 
     <section id="details">
-        <h2>Informações da extensão</h2>
-        <pre id="detailsContent"></pre>
-        <button onclick="closeDetails()">Fechar</button>
+
+        <div class="details-header">
+            <h2 id="detailsTitle">Informações da extensão</h2>
+            <p id="detailsSubtitle"></p>
+            <button onclick="closeDetails()">Fechar informações</button>
+        </div>
+
+        <div id="detailsContent"></div>
+
     </section>
 
 </main>
@@ -181,37 +275,135 @@
 </footer>
 
 <script>
+
     const LIST_URL = "./list.json";
 
     let database = [];
     let filtered = [];
 
+    const labels = {
+        extension: "Extensão",
+        name: "Nome completo",
+        category: "Categoria",
+        description_pt: "Descrição em português",
+        description_en: "Descrição em inglês",
+        mime_type: "MIME Type",
+        status: "Status",
+        developer: "Desenvolvedor",
+        first_release: "Primeiro lançamento",
+        compression: "Compressão",
+        encoding: "Codificação",
+        magic_number: "Assinatura do arquivo (Magic Number)",
+        platforms: "Plataformas",
+        programs: "Programas compatíveis",
+        common_usage: "Utilizações comuns",
+        advantages: "Vantagens",
+        disadvantages: "Desvantagens",
+        can_be_executed: "Pode ser executado?",
+        is_text_based: "É baseado em texto?",
+        official_documentation: "Documentação oficial",
+        sources: "Fontes"
+    };
+
+    const groups = [
+        {
+            title: "Informações gerais",
+            fields: [
+                "extension",
+                "name",
+                "category",
+                "description_pt",
+                "description_en",
+                "status",
+                "developer",
+                "first_release"
+            ]
+        },
+        {
+            title: "Informações técnicas",
+            fields: [
+                "mime_type",
+                "compression",
+                "encoding",
+                "magic_number",
+                "can_be_executed",
+                "is_text_based"
+            ]
+        },
+        {
+            title: "Compatibilidade",
+            fields: [
+                "platforms",
+                "programs"
+            ]
+        },
+        {
+            title: "Utilizações",
+            fields: [
+                "common_usage"
+            ]
+        },
+        {
+            title: "Vantagens e desvantagens",
+            fields: [
+                "advantages",
+                "disadvantages"
+            ]
+        },
+        {
+            title: "Documentação e fontes",
+            fields: [
+                "official_documentation",
+                "sources"
+            ]
+        }
+    ];
+
     async function loadExtensions() {
+
         const status = document.getElementById("status");
 
         try {
-            const response = await fetch(LIST_URL);
+
+            const response = await fetch(
+                LIST_URL + "?v=" + Date.now()
+            );
 
             if (!response.ok) {
-                throw new Error("Não foi possível acessar o list.json.");
+                throw new Error(
+                    "Não foi possível acessar o list.json."
+                );
             }
 
-           const raw = await response.text();
+            const raw = await response.text();
 
-const cleaned = raw
-    .replace(/^\uFEFF/, "")
-    .trim()
-    .replace(/^```(?:json)?\s*/i, "")
-    .replace(/\s*```$/, "")
-    .trim();
+            const cleaned = raw
+                .replace(/^\uFEFF/, "")
+                .trim()
+                .replace(/^```(?:json)?\s*/i, "")
+                .replace(/\s*```$/, "")
+                .trim();
 
-let data;
+            let data;
 
-try {
-    data = JSON.parse(cleaned);
-} catch (error) {
-    throw new Error("O list.json contém JSON inválido: " + error.message);
-} 
+            try {
+
+                data = JSON.parse(cleaned);
+
+            } catch (error) {
+
+                throw new Error(
+                    "O list.json contém JSON inválido: " +
+                    error.message
+                );
+
+            }
+
+            if (!Array.isArray(data.extensions)) {
+                throw new Error(
+                    "O campo extensions não existe ou não é uma lista."
+                );
+            }
 
             database = data.extensions;
 
@@ -225,85 +417,326 @@ try {
             renderExtensions();
 
         } catch (error) {
+
             status.textContent =
                 "Erro ao carregar o catálogo: " + error.message;
+
         }
+
     }
 
     function renderExtensions() {
-        const container = document.getElementById("extensions");
+
+        const container =
+            document.getElementById("extensions");
 
         container.innerHTML = "";
 
-        filtered.slice(0, 100).forEach((extension, index) => {
+        filtered.slice(0, 100).forEach(extension => {
+
             const card = document.createElement("article");
 
             card.className = "extension";
 
-            const name =
+            const title = document.createElement("h3");
+
+            title.textContent =
                 extension.extension ||
                 extension.name ||
-                extension.format ||
                 "Extensão sem nome";
 
-            const description =
+            const description = document.createElement("p");
+
+            description.textContent =
                 extension.description_pt ||
                 extension.description ||
                 extension.description_en ||
                 "Sem descrição disponível.";
 
-            const title = document.createElement("h3");
-            title.textContent = name;
+            card.append(title, description);
 
-            const text = document.createElement("p");
-            text.textContent = description;
+            if (extension.category) {
 
-            card.append(title, text);
+                const category = document.createElement("span");
+
+                category.className = "category";
+
+                category.textContent = extension.category;
+
+                card.appendChild(category);
+
+            }
 
             card.addEventListener("click", () => {
-                showDetails(filtered[index]);
+
+                showDetails(extension);
+
             });
 
             container.appendChild(card);
+
         });
 
         if (filtered.length > 100) {
+
             const info = document.createElement("p");
+
             info.className = "message";
+
             info.textContent =
                 "Mostrando 100 de " +
                 filtered.length.toLocaleString("pt-BR") +
                 " resultados. Refine sua pesquisa.";
+
             container.appendChild(info);
+
         }
+
+        if (filtered.length === 0) {
+
+            const info = document.createElement("p");
+
+            info.className = "message";
+
+            info.textContent =
+                "Nenhuma extensão encontrada.";
+
+            container.appendChild(info);
+
+        }
+
+    }
+
+    function formatValue(key, value) {
+
+        if (typeof value === "boolean") {
+
+            return value ? "Sim" : "Não";
+
+        }
+
+        if (
+            key === "official_documentation" &&
+            typeof value === "string"
+        ) {
+
+            return value;
+
+        }
+
+        return value;
+
+    }
+
+    function createField(key, value) {
+
+        const field = document.createElement("div");
+
+        field.className = "field";
+
+        const title = document.createElement("strong");
+
+        title.textContent =
+            labels[key] || key.replace(/_/g, " ");
+
+        field.appendChild(title);
+
+        if (Array.isArray(value)) {
+
+            const list = document.createElement("ul");
+
+            value.forEach(item => {
+
+                const li = document.createElement("li");
+
+                if (
+                    typeof item === "string" &&
+                    /^https:\/\/\S+$/i.test(item)
+                ) {
+
+                    const link = document.createElement("a");
+
+                    link.href = item;
+
+                    link.textContent = item;
+
+                    link.target = "_blank";
+
+                    link.rel = "noopener noreferrer";
+
+                    li.appendChild(link);
+
+                } else {
+
+                    li.textContent = String(item);
+
+                }
+
+                list.appendChild(li);
+
+            });
+
+            field.appendChild(list);
+
+        } else if (
+            typeof value === "string" &&
+            /^https:\/\/\S+$/i.test(value)
+        ) {
+
+            const link = document.createElement("a");
+
+            link.href = value;
+
+            link.textContent = value;
+
+            link.target = "_blank";
+
+            link.rel = "noopener noreferrer";
+
+            field.appendChild(link);
+
+        } else {
+
+            const text = document.createElement("p");
+
+            text.textContent = formatValue(key, value);
+
+            field.appendChild(text);
+
+        }
+
+        return field;
+
     }
 
     function showDetails(extension) {
-        document.getElementById("details").style.display = "block";
 
-        document.getElementById("detailsContent").textContent =
-            JSON.stringify(extension, null, 4);
+        const details = document.getElementById("details");
 
-        document.getElementById("details").scrollIntoView({
+        const content =
+            document.getElementById("detailsContent");
+
+        content.innerHTML = "";
+
+        document.getElementById("detailsTitle").textContent =
+            extension.extension || extension.name || "Extensão";
+
+        document.getElementById("detailsSubtitle").textContent =
+            extension.name || "";
+
+        const displayed = new Set();
+
+        groups.forEach(group => {
+
+            const section = document.createElement("div");
+
+            section.className = "details-section";
+
+            const heading = document.createElement("h3");
+
+            heading.textContent = group.title;
+
+            section.appendChild(heading);
+
+            let hasFields = false;
+
+            group.fields.forEach(key => {
+
+                if (
+                    Object.prototype.hasOwnProperty.call(extension, key) &&
+                    extension[key] !== null &&
+                    extension[key] !== undefined
+                ) {
+
+                    section.appendChild(
+                        createField(key, extension[key])
+                    );
+
+                    displayed.add(key);
+
+                    hasFields = true;
+
+                }
+
+            });
+
+            if (hasFields) {
+
+                content.appendChild(section);
+
+            }
+
+        });
+
+        // Exibe automaticamente qualquer campo adicional
+        // que não esteja listado nas categorias acima.
+
+        const extraFields = Object.keys(extension).filter(
+            key => !displayed.has(key)
+        );
+
+        if (extraFields.length > 0) {
+
+            const section = document.createElement("div");
+
+            section.className = "details-section";
+
+            const heading = document.createElement("h3");
+
+            heading.textContent = "Outras informações";
+
+            section.appendChild(heading);
+
+            extraFields.forEach(key => {
+
+                section.appendChild(
+                    createField(key, extension[key])
+                );
+
+            });
+
+            content.appendChild(section);
+
+        }
+
+        details.style.display = "block";
+
+        details.scrollIntoView({
             behavior: "smooth"
         });
+
     }
 
     function closeDetails() {
-        document.getElementById("details").style.display = "none";
+
+        document.getElementById("details").style.display =
+            "none";
+
     }
 
-    document.getElementById("search").addEventListener("input", event => {
-        const query = event.target.value.toLowerCase().trim();
+    document.getElementById("search").addEventListener(
+        "input",
+        event => {
 
-        filtered = database.filter(extension =>
-            JSON.stringify(extension).toLowerCase().includes(query)
-        );
+            const query = event.target.value
+                .toLowerCase()
+                .trim();
 
-        renderExtensions();
-    });
+            filtered = database.filter(extension =>
+
+                JSON.stringify(extension)
+                    .toLowerCase()
+                    .includes(query)
+
+            );
+
+            renderExtensions();
+
+        }
+    );
 
     loadExtensions();
+
 </script>
 
 </body>
