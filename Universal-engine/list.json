@@ -35,6 +35,126 @@
       "official_documentation": "https://www.rfc-editor.org/rfc/rfc8259",
       "platforms": ["Windows", "Linux", "macOS", "Android", "Web"],
       "sources": ["https://www.rfc-editor.org/rfc/rfc8259"]
-    }
+    },
+{
+  "extension": ".pdf",
+  "name": "Portable Document Format",
+  "category": "Documents",
+  "description_pt": "Formato de documento desenvolvido para preservar a aparência e a estrutura do conteúdo em diferentes dispositivos.",
+  "description_en": "Document format designed to preserve the appearance and structure of content across different devices.",
+  "mime_type": "application/pdf",
+  "status": "Open",
+  "official_documentation": "https://opensource.adobe.com/dc-acrobat-sdk-docs/pdfstandards/PDF32000_2008.pdf",
+  "platforms": ["Windows", "Linux", "macOS", "Android", "iOS", "Web"],
+  "sources": ["https://opensource.adobe.com/dc-acrobat-sdk-docs/pdfstandards/PDF32000_2008.pdf"]
+},
+{
+  "extension": ".docx",
+  "name": "Microsoft Word Open XML Document",
+  "category": "Documents",
+  "description_pt": "Formato de documento baseado em XML utilizado pelo Microsoft Word.",
+  "description_en": "XML-based document format used by Microsoft Word.",
+  "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "status": "Open",
+  "official_documentation": "https://ecma-international.org/publications-and-standards/standards/ecma-376/",
+  "platforms": ["Windows", "Linux", "macOS", "Android", "iOS", "Web"],
+  "sources": ["https://ecma-international.org/publications-and-standards/standards/ecma-376/"]
+},
+{
+  "extension": ".png",
+  "name": "Portable Network Graphics",
+  "category": "Images",
+  "description_pt": "Formato de imagem rasterizada que suporta transparência e compressão sem perdas.",
+  "description_en": "Raster image format that supports transparency and lossless compression.",
+  "mime_type": "image/png",
+  "status": "Open",
+  "official_documentation": "https://www.w3.org/TR/png-3/",
+  "platforms": ["Windows", "Linux", "macOS", "Android", "iOS", "Web"],
+  "sources": ["https://www.w3.org/TR/png-3/"]
+},
+{
+  "extension": ".jpg",
+  "name": "JPEG Image",
+  "category": "Images",
+  "description_pt": "Formato de imagem que utiliza compressão com perdas, muito utilizado em fotografias.",
+  "description_en": "Image format using lossy compression, widely used for photographs.",
+  "mime_type": "image/jpeg",
+  "status": "Open",
+  "official_documentation": "https://www.itu.int/rec/T-REC-T.81",
+  "platforms": ["Windows", "Linux", "macOS", "Android", "iOS", "Web"],
+  "sources": ["https://www.itu.int/rec/T-REC-T.81"]
+},
+{
+  "extension": ".mp3",
+  "name": "MPEG Audio Layer III",
+  "category": "Audio",
+  "description_pt": "Formato de áudio digital comprimido, amplamente utilizado para músicas e gravações.",
+  "description_en": "Compressed digital audio format widely used for music and recordings.",
+  "mime_type": "audio/mpeg",
+  "status": "Open",
+  "official_documentation": "https://www.loc.gov/preservation/digital/formats/fdd/fdd000012.shtml",
+  "platforms": ["Windows", "Linux", "macOS", "Android", "iOS", "Web"],
+  "sources": ["https://www.loc.gov/preservation/digital/formats/fdd/fdd000012.shtml"]
+},
+{
+  "extension": ".mp4",
+  "name": "MPEG-4 Part 14",
+  "category": "Video",
+  "description_pt": "Formato de contêiner multimídia utilizado para armazenar vídeos, áudio, legendas e outros dados.",
+  "description_en": "Multimedia container format used to store video, audio, subtitles, and other data.",
+  "mime_type": "video/mp4",
+  "status": "Open",
+  "official_documentation": "https://www.iso.org/standard/75929.html",
+  "platforms": ["Windows", "Linux", "macOS", "Android", "iOS", "Web"],
+  "sources": ["https://www.iso.org/standard/75929.html"]
+},
+{
+  "extension": ".zip",
+  "name": "ZIP Archive",
+  "category": "Archives",
+  "description_pt": "Formato de arquivo compactado que permite armazenar vários arquivos e diretórios em um único pacote.",
+  "description_en": "Compressed archive format that allows multiple files and directories to be stored in a single package.",
+  "mime_type": "application/zip",
+  "status": "Open",
+  "official_documentation": "https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT",
+  "platforms": ["Windows", "Linux", "macOS", "Android", "iOS"],
+  "sources": ["https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT"]
+},
+{
+  "extension": ".html",
+  "name": "HyperText Markup Language",
+  "category": "Web",
+  "description_pt": "Linguagem de marcação utilizada para estruturar páginas e documentos da Web.",
+  "description_en": "Markup language used to structure web pages and documents.",
+  "mime_type": "text/html",
+  "status": "Open",
+  "official_documentation": "https://html.spec.whatwg.org/",
+  "platforms": ["Browsers", "Web", "Windows", "Linux", "macOS", "Android", "iOS"],
+  "sources": ["https://html.spec.whatwg.org/"]
+},
+{
+  "extension": ".css",
+  "name": "Cascading Style Sheets",
+  "category": "Web",
+  "description_pt": "Linguagem de folhas de estilo utilizada para definir a apresentação visual de documentos HTML e XML.",
+  "description_en": "Style sheet language used to define the visual presentation of HTML and XML documents.",
+  "mime_type": "text/css",
+  "status": "Open",
+  "official_documentation": "https://www.w3.org/TR/CSS/",
+  "platforms": ["Browsers", "Web", "Windows", "Linux", "macOS", "Android", "iOS"],
+  "sources": ["https://www.w3.org/TR/CSS/"]
+},
+{
+  "extension": ".py",
+  "name": "Python Source File",
+  "category": "Programming",
+  "description_pt": "Arquivo de código-fonte escrito na linguagem de programação Python.",
+  "description_en": "Source code file written in the Python programming language.",
+  "mime_type": "text/x-python",
+  "status": "Open",
+  "official_documentation": "https://docs.python.org/3/reference/",
+  "platforms": ["Windows", "Linux", "macOS", "Android"],
+  "sources": ["https://docs.python.org/3/reference/"]
+}
   ]
 }
