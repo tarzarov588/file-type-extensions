@@ -198,9 +198,7 @@
 
             const data = await response.json();
 
-            database = Array.isArray(data)
-                ? data
-                : Object.values(data);
+            database = data.extensions;
 
             filtered = database;
 
