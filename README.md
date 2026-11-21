@@ -47,6 +47,7 @@ Tipo MIME
 Plataforma
 Padrão aberto ou proprietário
 Observações
+Versão
 ```
 
 ---
