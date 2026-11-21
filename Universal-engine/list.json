@@ -1,0 +1,42 @@
+```json
+{
+  "extensions": [
+    {
+      "extension": ".woff2",
+      "name": "Web Open Font Format 2",
+      "category": "Fonts",
+      "description_pt": "Formato de fonte comprimido desenvolvido para utilização na web.",
+      "description_en": "Compressed font format designed for use on the web.",
+      "mime_type": "font/woff2",
+      "status": "Open",
+      "official_documentation": "https://www.w3.org/TR/WOFF2/",
+      "platforms": ["Browsers", "Web"],
+      "sources": ["https://www.w3.org/TR/WOFF2/"]
+    },
+    {
+      "extension": ".svg",
+      "name": "Scalable Vector Graphics",
+      "category": "Images",
+      "description_pt": "Formato de imagem vetorial baseado em XML.",
+      "description_en": "XML-based vector image format.",
+      "mime_type": "image/svg+xml",
+      "status": "Open",
+      "official_documentation": "https://www.w3.org/TR/SVG2/",
+      "platforms": ["Browsers", "Windows", "Linux", "Android"],
+      "sources": ["https://www.w3.org/TR/SVG2/"]
+    },
+    {
+      "extension": ".json",
+      "name": "JavaScript Object Notation",
+      "category": "Data",
+      "description_pt": "Formato textual utilizado para armazenar e transmitir dados estruturados.",
+      "description_en": "Text-based format used to store and transmit structured data.",
+      "mime_type": "application/json",
+      "status": "Open",
+      "official_documentation": "https://www.rfc-editor.org/rfc/rfc8259",
+      "platforms": ["Windows", "Linux", "macOS", "Android", "Web"],
+      "sources": ["https://www.rfc-editor.org/rfc/rfc8259"]
+    }
+  ]
+}
+```
