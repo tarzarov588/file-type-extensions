@@ -196,7 +196,14 @@
                 throw new Error("Não foi possível acessar o list.json.");
             }
 
-            const data = await response.json();
+            const raw = await response.text();
+
+const cleaned = raw
+    .trim()
+    .replace(/^```(?:json)?\s*/i, "")
+    .replace(/\s*```$/, "");
+
+const data = JSON.parse(cleaned);
 
             database = data.extensions;
 
