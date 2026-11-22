@@ -850,6 +850,126 @@
   "disadvantages": ["Usually requires compilation or a compatible runtime", "Adds a development build step"],
   "can_be_executed": false,
   "is_text_based": true
+},
+    {
+  "extension": ".xml",
+  "name": "Extensible Markup Language",
+  "category": "Data",
+  "description_pt": "Formato de marcação baseado em texto utilizado para estruturar, armazenar e transportar dados de maneira organizada e hierárquica.",
+  "description_en": "Text-based markup format used to structure, store, and transport data in an organized hierarchical way.",
+  "mime_type": "application/xml",
+  "status": "Open",
+  "official_documentation": "https://www.w3.org/TR/xml/",
+  "platforms": ["Windows", "Linux", "macOS", "Android", "Web"],
+  "sources": ["https://www.w3.org/TR/xml/"]
+},
+{
+  "extension": ".yaml",
+  "name": "YAML Ain't Markup Language",
+  "category": "Data",
+  "description_pt": "Formato de serialização de dados legível por humanos, utilizado principalmente para arquivos de configuração e troca de informações.",
+  "description_en": "Human-readable data serialization format mainly used for configuration files and information exchange.",
+  "mime_type": "application/yaml",
+  "status": "Open",
+  "official_documentation": "https://yaml.org/spec/1.2.2/",
+  "platforms": ["Windows", "Linux", "macOS", "Android"],
+  "sources": ["https://yaml.org/spec/1.2.2/"]
+},
+{
+  "extension": ".toml",
+  "name": "Tom's Obvious Minimal Language",
+  "category": "Data",
+  "description_pt": "Formato de arquivo de configuração simples e legível, projetado para ser fácil de interpretar por pessoas e programas.",
+  "description_en": "Simple and readable configuration file format designed to be easy for both humans and programs to interpret.",
+  "mime_type": "application/toml",
+  "status": "Open",
+  "official_documentation": "https://toml.io/en/",
+  "platforms": ["Windows", "Linux", "macOS", "Android"],
+  "sources": ["https://toml.io/en/"]
+},
+{
+  "extension": ".csv",
+  "name": "Comma-Separated Values",
+  "category": "Data",
+  "description_pt": "Formato de texto utilizado para armazenar dados tabulares, organizando valores em linhas e separando campos por delimitadores, geralmente vírgulas.",
+  "description_en": "Text format used to store tabular data, organizing values into rows and separating fields with delimiters, usually commas.",
+  "mime_type": "text/csv",
+  "status": "Open",
+  "official_documentation": "https://www.rfc-editor.org/rfc/rfc4180",
+  "platforms": ["Windows", "Linux", "macOS", "Android", "Web"],
+  "sources": ["https://www.rfc-editor.org/rfc/rfc4180"]
+},
+{
+  "extension": ".odt",
+  "name": "OpenDocument Text",
+  "category": "Documents",
+  "description_pt": "Formato aberto de documentos de texto pertencente ao padrão OpenDocument, utilizado para armazenar textos formatados, imagens e outros elementos.",
+  "description_en": "Open document format belonging to the OpenDocument standard, used to store formatted text, images, and other elements.",
+  "mime_type": "application/vnd.oasis.opendocument.text",
+  "status": "Open",
+  "official_documentation": "https://docs.oasis-open.org/office/v1.2/os/part1/OpenDocument-v1.2-os-part1.html",
+  "platforms": ["Windows", "Linux", "macOS", "Android"],
+  "sources": ["https://docs.oasis-open.org/office/v1.2/os/part1/OpenDocument-v1.2-os-part1.html"]
+},
+{
+  "extension": ".epub",
+  "name": "Electronic Publication",
+  "category": "Documents",
+  "description_pt": "Formato aberto de publicação digital utilizado principalmente para livros eletrônicos, permitindo texto adaptável e inclusão de imagens e outros conteúdos.",
+  "description_en": "Open digital publication format mainly used for electronic books, supporting reflowable text, images, and other content.",
+  "mime_type": "application/epub+zip",
+  "status": "Open",
+  "official_documentation": "https://www.w3.org/TR/epub-33/",
+  "platforms": ["Windows", "Linux", "macOS", "Android", "iOS"],
+  "sources": ["https://www.w3.org/TR/epub-33/"]
+},
+{
+  "extension": ".rs",
+  "name": "Rust Source File",
+  "category": "Programming",
+  "description_pt": "Arquivo de código-fonte da linguagem Rust, utilizado para desenvolver aplicações e sistemas com foco em desempenho e segurança de memória.",
+  "description_en": "Rust programming language source code file used to develop applications and systems focused on performance and memory safety.",
+  "mime_type": "text/x-rust",
+  "status": "Open",
+  "official_documentation": "https://doc.rust-lang.org/reference/",
+  "platforms": ["Windows", "Linux", "macOS"],
+  "sources": ["https://doc.rust-lang.org/reference/"]
+},
+{
+  "extension": ".go",
+  "name": "Go Source File",
+  "category": "Programming",
+  "description_pt": "Arquivo de código-fonte da linguagem Go, utilizado no desenvolvimento de aplicações, serviços de rede e sistemas.",
+  "description_en": "Go programming language source code file used to develop applications, network services, and systems.",
+  "mime_type": "text/x-go",
+  "status": "Open",
+  "official_documentation": "https://go.dev/ref/spec",
+  "platforms": ["Windows", "Linux", "macOS"],
+  "sources": ["https://go.dev/ref/spec"]
+},
+{
+  "extension": ".java",
+  "name": "Java Source File",
+  "category": "Programming",
+  "description_pt": "Arquivo de código-fonte da linguagem Java, utilizado para desenvolver aplicações multiplataforma, sistemas corporativos e aplicativos Android.",
+  "description_en": "Java programming language source code file used to develop cross-platform applications, enterprise systems, and Android applications.",
+  "mime_type": "text/x-java-source",
+  "status": "Open",
+  "official_documentation": "https://docs.oracle.com/javase/specs/",
+  "platforms": ["Windows", "Linux", "macOS"],
+  "sources": ["https://docs.oracle.com/javase/specs/"]
+},
+{
+  "extension": ".kt",
+  "name": "Kotlin Source File",
+  "category": "Programming",
+  "description_pt": "Arquivo de código-fonte da linguagem Kotlin, utilizado no desenvolvimento de aplicativos Android, aplicações multiplataforma e sistemas.",
+  "description_en": "Kotlin programming language source code file used to develop Android applications, multiplatform applications, and systems.",
+  "mime_type": "text/x-kotlin",
+  "status": "Open",
+  "official_documentation": "https://kotlinlang.org/spec/",
+  "platforms": ["Windows", "Linux", "macOS", "Android"],
+  "sources": ["https://kotlinlang.org/spec/"]
 }
   ]
 }
