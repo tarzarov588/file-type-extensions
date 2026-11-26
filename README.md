@@ -454,7 +454,7 @@ O conteúdo deste repositório está disponível sob a licença MIT.
 Repository content is available under the MIT License.
 
 > Veja o conteúdo do CONTRIBUTING.md para melhor publicação
-See the content of CONTRIBUTING.md for better publication. 
+                                      See the content of CONTRIBUTING.md for better publication. 
 
 ## Aviso / Disclaimer
 
