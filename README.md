@@ -1,8 +1,8 @@
-<p align="center">
-  <img src="https://placehold.co/1200x300/0d1117/58a6ff/png?text=File+Type+Extensions" alt="File Type Extensions banner" width="100%">
-</p>
-
 # File Type Extensions
+
+![GitHub contributors](https://img.shields.io/github/contributors/tarzarov588/file-type-extensions?style=for-the-badge)
+![GitHub license](https://img.shields.io/github/license/tarzarov588/file-type-extensions?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/tarzarov588/file-type-extensions?style=for-the-badge)
 
 > Catálogo bilíngue — Português e Inglês  
 > Bilingual catalog — Portuguese and English
