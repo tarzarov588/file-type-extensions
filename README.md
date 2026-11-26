@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://placehold.co/1200x300/0d1117/58a6ff/png?text=File+Type+Extensions" alt="File Type Extensions banner" width="100%">
+</p>
+
 # File Type Extensions
 
 > Catálogo bilíngue — Português e Inglês  
