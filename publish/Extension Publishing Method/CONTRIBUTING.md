@@ -84,7 +84,7 @@ extensions/
 - `LICENSE`: MIT license.
 - `METADATA.md`: repository and catalog metadata.
 
-## Required structure
+## Required structure for executables
 
 Every extension submission must include its own folder under `extensions/`:
 
