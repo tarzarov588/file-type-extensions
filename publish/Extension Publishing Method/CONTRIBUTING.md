@@ -1,5 +1,9 @@
 # Contributing
 
+![GitHub issues](https://img.shields.io/github/issues/tarzarov588/file-type-extensions?style=for-the-badge)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/tarzarov588/file-type-extensions?style=for-the-badge)
+![GitHub license](https://img.shields.io/github/license/tarzarov588/file-type-extensions?style=for-the-badge)
+
 Thank you for helping expand **file-type-extensions**.
 
 ## Before Opening an Issue
